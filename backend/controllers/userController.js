@@ -32,8 +32,7 @@ const login = async (req, res) => {
 
     try {
         const { email, password } = req.body
-        const user = await userModel.findOne({ email: email }, { timeout: false }); 
-        console.log(user)
+        const user = await userModel.findOne({ email: email });
         const userId = user._id.toString()
         const hash = user.password
 
@@ -54,6 +53,7 @@ const login = async (req, res) => {
         console.error('Error during login:', error);
         return res.status(500).send({ message: 'Internal server error.' });
     }
+    // res.send('login')
 }
 
 module.exports = { signup, login }
