@@ -317,10 +317,10 @@ const Drawing = () => {
                         </button>
 
                         <label htmlFor="" className="font-bold text-xl ">s</label>
-                        <input type="number" className="w-8" min={3} value={sides} onChange={(e) => { setSides(e.target.value); console.log(e.target.value) }} />
+                        <input type="number" className="w-16" min={3} value={sides} onChange={(e) => { setSides(e.target.value); console.log(e.target.value) }} />
 
                         <label htmlFor="" className="font-bold text-xl ">t</label>
-                        <input type="number" className="w-8" min={1} value={thickness} onChange={(e) => { setThickness(e.target.value); console.log(e.target.value) }} />
+                        <input type="number" className="w-16" min={1} value={thickness} onChange={(e) => { setThickness(e.target.value); console.log(e.target.value) }} />
 
                         <button>
                             <input className="w-6 h-6" type="color" value={fillColor} onChange={(e) => setFillColor(e.target.value)} />

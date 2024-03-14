@@ -1,9 +1,12 @@
 import React from 'react'
-import Drawing from './components/Drawing'
+import DrawingPage from './pages/DrawingPage'
+import AllRoutes from './routes/AllRoutes'
 
 const App = () => {
   return (
-    <><Drawing /></>
+    <>
+    <AllRoutes/>
+    </>
   )
 }
 
