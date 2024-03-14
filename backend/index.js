@@ -7,14 +7,14 @@ dotenv.config();
 const userRouter = require('./routes/user.route')
 const drawing = require('./routes/drawing.route');
 
-// const morgan = require('morgan');
+const morgan = require('morgan');
 
 
 const app = express();
 app.use(cors('*'))
 app.use(express.json())
 
-// app.use(morgan('dev'))
+app.use(morgan('dev'))
 app.use(express.urlencoded({ extended: false }))
 
 app.get('/', (req, res) => {
@@ -26,9 +26,6 @@ app.use('/users', userRouter)
 
 app.use(authentication)
 app.use('/drawing', drawing)
-// app.use('/cart', cartRouter)
-// app.use('/address', addressRouter)
-
 
 const PORT = process.env.PORT
 app.listen(PORT, async () => {

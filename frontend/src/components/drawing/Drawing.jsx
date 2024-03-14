@@ -12,6 +12,7 @@ import { Arrow, Circle, Layer, Line, Rect, RegularPolygon, Stage, Star, Transfor
 import { useRef, useState } from 'react';
 import { ACTIONS } from "./constants";
 import { v4 as uuidv4 } from 'uuid'
+import axios from 'axios'
 
 const Drawing = () => {
     const stageRef = useRef();
@@ -251,14 +252,31 @@ const Drawing = () => {
         setSelectedDlt(id);
     }
 
-    const handleExport = () => {
+    const handleExport = async () => {
+        const token = localStorage.getItem('e-token');
         const uri = stageRef.current.toDataURL();
+        
         var link = document.createElement("a");
         link.download = "image.png";
         link.href = uri;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
+
+        console.log(uri)
+
+        const res = await axios.post(
+            `${process.env.REACT_APP_API_URL}/drawing/create`,
+            {
+                imgUrl: uri
+            },
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }
+        )
+        console.log(res.data)
     }
 
 
